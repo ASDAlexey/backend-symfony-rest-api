@@ -19,7 +19,7 @@ services:
 
     api_exception_subscriber:
         class: AppBundle\EventListener\ApiExceptionSubscriber
-        arguments: ['%kernel.debug%', '@logger','@api.response_factory]
+        arguments: ['%kernel.debug%', '@logger','@api.response_factory']
         tags:
             - { name: kernel.event_subscriber }
 

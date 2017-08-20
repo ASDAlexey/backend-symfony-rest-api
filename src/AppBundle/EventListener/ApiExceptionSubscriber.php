@@ -15,9 +15,6 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 class ApiExceptionSubscriber implements EventSubscriberInterface {
     private $debug;
     private $logger;
-    /**
-     * @var ResponseFactory
-     */
     private $responseFactory;
 
     public function __construct($debug, LoggerInterface $logger, ResponseFactory $responseFactory) {
@@ -61,9 +58,9 @@ class ApiExceptionSubscriber implements EventSubscriberInterface {
             }
         }
 
-        $response = $this->responseFactory->createResponse($apiProblem);
+        $responseData = $this->responseFactory->createResponse($apiProblem);
 
-        $event->setResponse($response);
+        $event->setResponse($responseData);
     }
 
     public static function getSubscribedEvents() {
