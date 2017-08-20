@@ -7,6 +7,15 @@ security:
             entity: { class: AppBundle:User }
 
     firewalls:
+        api:
+          pattern: ^/api/
+          anonymous: true
+          stateless: true
+
+          guard:
+              authenticator:
+                - jwt_token_authenticator
+
         main:
             pattern: ^/
             anonymous: true
@@ -18,10 +27,6 @@ security:
             logout:
                 # The route name the user can go to in order to logout
                 path: security_logout
-
-            guard:
-              authenticator:
-                - jwt_token_authenticator
 
     access_control:
         - { path: ^/_wdt|_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
