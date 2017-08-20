@@ -19,6 +19,10 @@ security:
                 # The route name the user can go to in order to logout
                 path: security_logout
 
+            guard:
+              authenticator:
+                - jwt_token_authenticator
+
     access_control:
         - { path: ^/_wdt|_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
